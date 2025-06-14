@@ -54,7 +54,7 @@ WALLET_ADDRESS=your_wallet_address_here
 ### 3. テストネット用ETHの取得
 
 Base Sepoliaテストネットで動作確認するため、以下からテスト用ETHを取得してください：
-- [Base Sepolia Faucet](https://www.coinbase.com/faucets/base-ethereum-sepolia-faucet)
+- [Base Sepolia Faucet](https://www.alchemy.com/faucets/base-sepolia)
 
 ### 4. スマートコントラクトのコンパイル
 
