@@ -37,7 +37,7 @@ RPC_URL=https://sepolia.base.org
 
 ### Step 3: テスト用ETHを取得 (2分)
 
-[Base Sepolia Faucet](https://www.coinbase.com/faucets/base-ethereum-sepolia-faucet)からテスト用ETHを取得
+[Base Sepolia Faucet](https://www.alchemy.com/faucets/base-sepolia)からテスト用ETHを取得
 
 ### Step 4: 実行！ (8分)
 
