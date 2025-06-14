@@ -1,0 +1,31 @@
+{
+  "name": "base-blockchain-workshop",
+  "version": "1.0.0",
+  "description": "Base blockchain smart contract workshop using viem",
+  "main": "index.js",
+  "scripts": {
+    "compile": "node scripts/compile.js",
+    "check-wallet": "node scripts/check-wallet.js",
+    "deploy": "node scripts/deploy-contract.js",
+    "execute": "node scripts/execute-contract.js"
+  },
+  "keywords": [
+    "blockchain",
+    "base",
+    "ethereum",
+    "smart-contracts",
+    "viem",
+    "workshop",
+    "web3"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "viem": "^2.21.1",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "solc": "^0.8.28"
+  },
+  "type": "module"
+}
