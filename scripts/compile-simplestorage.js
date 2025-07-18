@@ -3,10 +3,10 @@ import path from "path";
 import solc from "solc";
 
 /**
- * Solidityコントラクトをコンパイルし、ABIとバイトコードを生成します
+ * SimpleStorageコントラクトをコンパイルし、ABIとバイトコードを生成します
  */
-async function compileContract() {
-  console.log("🔧 Solidityコントラクトをコンパイル中...");
+async function compileSimpleStorage() {
+  console.log("🔧 SimpleStorageコントラクトをコンパイル中...");
 
   try {
     // contracts/SimpleStorage.solファイルを読み込み
@@ -15,6 +15,11 @@ async function compileContract() {
       "contracts",
       "SimpleStorage.sol"
     );
+    
+    if (!fs.existsSync(contractPath)) {
+      throw new Error(`SimpleStorage.solファイルが見つかりません: ${contractPath}`);
+    }
+    
     const source = fs.readFileSync(contractPath, "utf8");
 
     // Solidityコンパイラの入力設定
@@ -84,7 +89,7 @@ async function compileContract() {
       JSON.stringify(contractData, null, 2)
     );
 
-    console.log("✅ コンパイル完了！");
+    console.log("✅ SimpleStorageコンパイル完了！");
     console.log(`📁 出力先: compiled/SimpleStorage.json`);
     console.log(`📊 ABI entries: ${abi.length}`);
     console.log(`💾 Bytecode size: ${bytecode.length / 2} bytes`);
@@ -95,4 +100,4 @@ async function compileContract() {
 }
 
 // スクリプト実行
-compileContract();
+compileSimpleStorage();

@@ -7,11 +7,21 @@
 ```
 base-workshop/
 ├── contracts/
-│   └── SimpleStorage.sol      # 簡単なスマートコントラクト
+│   ├── SimpleStorage.sol      # 簡単なスマートコントラクト
+│   └── ERC20Token.sol         # ERC-20トークンコントラクト
 ├── scripts/
 │   ├── check-wallet.js        # ウォレット残高確認
-│   ├── execute-contract.js    # コントラクト実行
-│   └── deploy-contract.js     # コントラクトデプロイ
+│   ├── compile-simplestorage.js # SimpleStorageコンパイル
+│   ├── compile-erc20.js       # ERC-20コンパイル
+│   ├── deploy-simplestorage.js # SimpleStorageデプロイ
+│   ├── simplestorage-execute.js # SimpleStorage実行
+│   ├── deploy-erc20.js        # ERC-20トークンデプロイ
+│   ├── erc20-info.js          # ERC-20トークン情報表示
+│   ├── erc20-balance.js       # ERC-20残高確認
+│   ├── erc20-transfer.js      # ERC-20トークン転送
+│   ├── erc20-approve.js       # ERC-20承認
+│   ├── erc20-mint.js          # ERC-20ミント
+│   └── erc20-burn.js          # ERC-20焼却
 ├── compiled/                  # コンパイル済みコントラクト
 ├── .env.example              # 環境変数テンプレート
 ├── package.json
@@ -44,6 +54,10 @@ RPC_URL=https://sepolia.base.org
 
 # ウォレットアドレス
 WALLET_ADDRESS=your_wallet_address_here
+
+# コントラクトアドレス（デプロイ後に自動設定されます）
+SIMPLESTORAGE_CONTRACT_ADDRESS=
+ERC20_CONTRACT_ADDRESS=
 ```
 
 **⚠️ 重要な注意事項：**
@@ -59,7 +73,8 @@ Base Sepoliaテストネットで動作確認するため、以下からテス�
 ### 4. スマートコントラクトのコンパイル
 
 ```bash
-npm run compile
+npm run compile:simplestorage   # SimpleStorageの場合
+npm run compile:erc20           # ERC20の場合
 ```
 
 このコマンドでSolidityコントラクトがコンパイルされ、`compiled/`ディレクトリにABIとバイトコードが生成されます。
@@ -77,7 +92,8 @@ npm run check-wallet
 ### 2. スマートコントラクトのデプロイ
 
 ```bash
-npm run deploy
+npm run deploy:simplestorage    # SimpleStorageの場合
+npm run deploy:erc20            # ERC20の場合
 ```
 
 `SimpleStorage`コントラクトをBase Sepoliaテストネットにデプロイします。
@@ -85,7 +101,7 @@ npm run deploy
 ### 3. スマートコントラクトの実行
 
 ```bash
-npm run execute
+npm run exe:~~~
 ```
 
 デプロイ済みのコントラクトと相互作用（数値の保存・取得）を行います。
@@ -99,6 +115,27 @@ npm run execute
 - **store(uint256 _number)**: 数値を保存する関数
 - **retrieve()**: 保存された数値を取得する関数
 
+### ERC-20トークンについて
+
+`ERC20Token`コントラクトは標準的なERC-20トークンの実装です：
+
+#### 基本機能
+- **name()**: トークン名を取得
+- **symbol()**: トークンシンボルを取得
+- **decimals()**: 小数点以下の桁数を取得
+- **totalSupply()**: 総発行量を取得
+- **balanceOf(address)**: 指定アドレスの残高を取得
+
+#### 転送機能
+- **transfer(address to, uint256 value)**: トークンを転送
+- **approve(address spender, uint256 value)**: 転送の承認
+- **transferFrom(address from, address to, uint256 value)**: 承認された転送
+- **allowance(address owner, address spender)**: 承認額を確認
+
+#### 追加機能
+- **mint(address to, uint256 value)**: トークンを新規発行
+- **burn(uint256 value)**: トークンを焼却
+
 ### viemライブラリについて
 
 [viem](https://viem.sh/)は、Ethereumとやり取りするためのモダンなTypeScript/JavaScriptライブラリです：
@@ -110,10 +147,23 @@ npm run execute
 
 ## 🔧 NPMスクリプト
 
-- `npm run compile`: Solidityコントラクトをコンパイル
+### 基本操作
 - `npm run check-wallet`: ウォレット残高を確認
-- `npm run deploy`: コントラクトをデプロイ
-- `npm run execute`: コントラクトを実行
+- `npm run compile:simplestorage`: SimpleStorageコントラクトをコンパイル
+- `npm run compile:erc20`: ERC-20トークンコントラクトをコンパイル
+
+### SimpleStorage
+- `npm run deploy:simplestorage`: SimpleStorageコントラクトをデプロイ
+- `npm run exe:simplestorage`: SimpleStorageコントラクトを実行
+
+### ERC-20トークン
+- `npm run deploy:erc20`: ERC-20トークンコントラクトをデプロイ
+- `npm run exe:erc20-info`: ERC-20トークンの基本情報を表示
+- `npm run exe:erc20-balance`: ERC-20トークンの残高を確認
+- `npm run exe:erc20-transfer`: ERC-20トークンを転送
+- `npm run exe:erc20-approve`: ERC-20トークンの使用を承認
+- `npm run exe:erc20-mint`: ERC-20トークンを新規発行
+- `npm run exe:erc20-burn`: ERC-20トークンを焼却
 
 ## 📖 参考リンク
 

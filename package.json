@@ -4,10 +4,18 @@
   "description": "Base blockchain smart contract workshop using viem",
   "main": "index.js",
   "scripts": {
-    "compile": "node scripts/compile.js",
     "check-wallet": "node scripts/check-wallet.js",
-    "deploy": "node scripts/deploy-contract.js",
-    "execute": "node scripts/execute-contract.js"
+    "compile:simplestorage": "node scripts/compile-simplestorage.js",
+    "compile:erc20": "node scripts/compile-erc20.js",
+    "deploy:simplestorage": "node scripts/deploy-simplestorage.js",
+    "deploy:erc20": "node scripts/deploy-erc20.js",
+    "exe:simplestorage": "node scripts/simplestorage-execute.js",
+    "exe:erc20-info": "node scripts/erc20-info.js",
+    "exe:erc20-balance": "node scripts/erc20-balance.js",
+    "exe:erc20-transfer": "node scripts/erc20-transfer.js",
+    "exe:erc20-approve": "node scripts/erc20-approve.js",
+    "exe:erc20-mint": "node scripts/erc20-mint.js",
+    "exe:erc20-burn": "node scripts/erc20-burn.js"
   },
   "keywords": [
     "blockchain",
