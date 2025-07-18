@@ -19,6 +19,9 @@ contract ERC20Token {
     // 承認された転送可能額
     mapping(address => mapping(address => uint256)) public allowance;
     
+    // コントラクトの所有者
+    address public owner;
+    
     // イベント定義
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -40,6 +43,7 @@ contract ERC20Token {
         symbol = _symbol;
         decimals = _decimals;
         totalSupply = _totalSupply * 10**decimals;
+        owner = msg.sender;
         balanceOf[msg.sender] = totalSupply;
         emit Transfer(address(0), msg.sender, totalSupply);
     }
@@ -100,6 +104,7 @@ contract ERC20Token {
      * @param _value 発行する量
      */
     function mint(address _to, uint256 _value) public {
+        require(msg.sender == owner, "Only owner can mint");
         require(_to != address(0), "Mint to zero address");
         
         totalSupply += _value;
