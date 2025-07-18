@@ -25,8 +25,8 @@ async function deployERC20() {
     const { abi, bytecode } = loadCompiledContract("ERC20Token");
 
     // トークンのパラメータ設定
-    const tokenName = "BaseJapan Token";
-    const tokenSymbol = "BJT";
+    const tokenName = "BaseJapan Handson";
+    const tokenSymbol = "BJDEMO";
     const tokenDecimals = 18;
     const tokenTotalSupply = 1000000; // 1,000,000 tokens
 
@@ -34,7 +34,9 @@ async function deployERC20() {
     console.log(`📝 トークン名: ${tokenName}`);
     console.log(`🔤 シンボル: ${tokenSymbol}`);
     console.log(`🔢 小数点桁数: ${tokenDecimals}`);
-    console.log(`💎 総発行量: ${tokenTotalSupply.toLocaleString()} ${tokenSymbol}`);
+    console.log(
+      `💎 総発行量: ${tokenTotalSupply.toLocaleString()} ${tokenSymbol}`
+    );
 
     // コントラクトをデプロイ
     const hash = await walletClient.deployContract({
