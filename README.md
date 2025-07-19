@@ -68,7 +68,7 @@ ERC20_CONTRACT_ADDRESS=
 ### 3. テストネット用ETHの取得
 
 Base Sepoliaテストネットで動作確認するため、以下からテスト用ETHを取得してください：
-- [Base Sepolia Faucet](https://www.alchemy.com/faucets/base-sepolia)
+- [Base Sepolia Faucets | base docs](https://docs.base.org/base-chain/tools/network-faucets)
 
 ### 4. スマートコントラクトのコンパイル
 
