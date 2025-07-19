@@ -22,6 +22,9 @@ contract ERC20Token {
     // コントラクトの所有者
     address public owner;
     
+    // 発行上限を設定したい場合の例：
+    // uint256 public maxSupply = 10000000 * 10**18; // 1000万トークン上限
+    
     // イベント定義
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -102,6 +105,10 @@ contract ERC20Token {
      * @dev 新しいトークンを発行する関数（所有者のみ）
      * @param _to 発行先アドレス
      * @param _value 発行する量
+     * 
+     * 注意：現在は発行上限なし（uint256の上限まで）
+     * 発行上限を設定したい場合は以下のチェックを追加：
+     * require(totalSupply + _value <= maxSupply, "Exceeds max supply");
      */
     function mint(address _to, uint256 _value) public {
         require(msg.sender == owner, "Only owner can mint");
